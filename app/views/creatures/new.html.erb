@@ -1,16 +1,25 @@
-<h1>Creatures#new</h1>
+<h1>Add A Creature</h1>
 
-<%= form_for @creature do |c| %>
-	
-	<div>
-		<%= c.label :name %>
-		<%= c.text_field :name %>
-	</div>	
+<div class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for @creature do |c| %>
+			
+			<div class="name-edit">
+				<%= c.label :name %><br>
+				<%= c.text_field :name %>
+			</div>	
 
-	<div>
-		<%= c.label :description %>
-		<%= c.text_area :description %>
+			<div class="descrip-edit">
+				<%= c.label :description %><br>
+				<%= c.text_area :description %>
+			</div>
+			
+			<div class="submit">
+			<%= c.submit %>
+			</div>
+		<% end %>
+
 	</div>
+</div>
 
-	<%= c.submit %>
-<% end %>
+
