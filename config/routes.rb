@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # get 'tags/index'
+
+  # get 'tags/show'
+
   get 'main/index'
 
   # get 'creatures/index'
@@ -18,7 +22,12 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
+  get '/creatures' => 'creatures#index'
+  get '/creatures/:id' => 'creatures#show'
+
+  resources :tags
   resources :creatures
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

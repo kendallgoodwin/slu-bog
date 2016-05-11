@@ -13,6 +13,10 @@
 				<%= c.label :description %><br>
 				<%= c.text_area :description %>
 			</div>
+
+			<div class="descrip-edit">
+			<%= c.collection_check_boxes :tag, @tags, :id, :name %>
+			</div>
 			
 			<div class="submit">
 			<%= c.submit %>
