@@ -22,6 +22,7 @@ class CreaturesController < ApplicationController
 
   def show
     @creature = Creature.find params[:id]
+    render :json => @creature
   end
 
   def update

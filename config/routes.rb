@@ -22,8 +22,9 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
-  get '/creatures' => 'creatures#index'
-  get '/creatures/:id' => 'creatures#show'
+  # get '/creatures' => 'creatures#index'
+  # get '/creatures/:id' => 'creatures#show'
+  
 
   resources :tags
   resources :creatures
