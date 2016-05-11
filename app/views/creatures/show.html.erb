@@ -9,7 +9,7 @@
 			  <div class="panel-body">
 			  	<p><%= @creature.description %></p>
 			  	<ul>
-			  	<% for tag in creature.tag %>
+			  	<% for tag in @creature.tags %>
 			  	<li><%= tag.name %></li>
 			  	<% end %>
 					</ul>
