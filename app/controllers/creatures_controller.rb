@@ -18,6 +18,7 @@ class CreaturesController < ApplicationController
   def edit
     @creature = Creature.find params[:id]
     @tags = Tag.all
+    render :json => @creature
   end
 
   def show

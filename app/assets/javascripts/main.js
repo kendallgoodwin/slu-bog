@@ -25,6 +25,31 @@ $(document).ready(function() {
 	});
 }
 
+	function editCreature() {
+		$('.edit-button').on('click', function(e) {
+			e.preventDefault();
+			console.log(this.href);
+			$.ajax({
+				url: this.href,
+				method: 'GET',
+				success: function(creature) {
+					var homepage = $('#homepage');
+					homepage.html('');
+
+					homepage.append(
+						'<h1>' + creature.name + '</h1>'
+						);
+					homepage.append(
+						
+						);
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			});
+		});
+	}
+
 	function addEventListeners() {
 		$('.show-link').click(function(e) {
 		e.preventDefault();
@@ -39,10 +64,12 @@ $(document).ready(function() {
 					
 					homepage.append(
 						'<h1>' + creature.name + '</h1><br><h3>' + creature.description + 
-						'</h3><br><a href="/creatures/' + creature.id + '/edit"><button class="btn-primary edit-button">Edit</button></a>
-						<a href="/creatures"><button class="btn-primary to-all-creatures">Go Back</button></a>' 
+						'</h3><br><a href="/creatures/' + creature.id + 
+						'/edit" class="edit-button"><button class="btn-primary">Edit</button></a>'+
+						'<a href="/creatures"><button class="btn-primary to-all-creatures">Go Back</button></a>'
 					);
-				buttonListeners();
+				buttonListeners();	
+				editCreature();
 			},
 			error: function(err) {
 				console.log(err);
@@ -57,4 +84,5 @@ $(document).ready(function() {
 
 
 	buttonListeners();
+	editCreature();
 });
