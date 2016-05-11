@@ -40,7 +40,11 @@ $(document).ready(function() {
 						'<h1>' + creature.name + '</h1>'
 						);
 					homepage.append(
-						
+						'<form>' +
+						'Name <input type="text" name="name" placeholder=' + creature.name +'>' + 
+						'Description <input type="text_area" name="description" placeholder=' + creature.description + '>' + 
+						'<input type="submit">Submit' +
+						'</form>'
 						);
 				},
 				error: function(err) {
@@ -48,6 +52,29 @@ $(document).ready(function() {
 				}
 			});
 		});
+	}
+
+	function deleteCreature() {
+		$('.delete-creature').on('click', function(e) {
+			e.preventDefault();
+
+			$.ajax({
+				url: this.href,
+				method: 'DELETE',
+				success: function(data) {
+					homepage = $('#homepage');
+
+					homepage.append(
+						'<form action="#" method ="POST">' +
+						'<input type="hidden" name="name">' + 
+						'<input type="hidden" name="description">' + 
+						'<input type="hidden" name="id">'
+						'<input type="submit">' +
+						'</form>'
+						);
+				}
+			})
+		})
 	}
 
 	function addEventListeners() {
@@ -66,6 +93,8 @@ $(document).ready(function() {
 						'<h1>' + creature.name + '</h1><br><h3>' + creature.description + 
 						'</h3><br><a href="/creatures/' + creature.id + 
 						'/edit" class="edit-button"><button class="btn-primary">Edit</button></a>'+
+						'<a href="/creatures/' + creature.id + '"><button class="btn-primary delete-creature">' +
+						'Delete</button></a>' +
 						'<a href="/creatures"><button class="btn-primary to-all-creatures">Go Back</button></a>'
 					);
 				buttonListeners();	
